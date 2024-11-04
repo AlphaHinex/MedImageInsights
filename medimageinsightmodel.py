@@ -185,7 +185,7 @@ class MedImageInsight:
 
             # Move text tensors to the correct device
             text_tokens = {k: v.to(self.device) for k, v in text_tokens.items()}
-            output["text_embeddings"] = self.model.encode_text(text_tokens).cpu().numpy()
+            output["text_embeddings"] = self.model.encode_text(text_tokens).detach().cpu().numpy()
 
 
         return output
