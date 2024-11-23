@@ -15,6 +15,8 @@ def read_image(image_path):
 
 # Load model
 classifier.load_model()
+# Set model into eval mode
+classifier.model.eval()
 
 import urllib.request
 
