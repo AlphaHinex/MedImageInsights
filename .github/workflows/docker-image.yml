@@ -18,9 +18,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+    - name: Checkout codes and files
     - uses: actions/checkout@v4
+      with:
+        lfs: true
+
     - name: Check
       run: du -sh * 
+
     - name: Build image
       run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
