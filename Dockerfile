@@ -1,4 +1,4 @@
-FROM python:3.8.19-alpine
+FROM python:3.8.19-bookworm
 
 COPY . /MedImageInsights
 WORKDIR /MedImageInsights
