@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Check
-      run: ls -alh
+      run: du -sh * 
     - name: Build image
       run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
