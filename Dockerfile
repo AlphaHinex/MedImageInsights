@@ -1,9 +1,10 @@
-FROM astral/uv:python3.8-alpine
+FROM python:3.8.19-alpine
 
 COPY . /MedImageInsights
 WORKDIR /MedImageInsights
 
 RUN python -V
+RUN pip install uv
 RUN uv --version
 RUN uv python list
 
