@@ -20,8 +20,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Check
-      run: du -sh * 
+    - name: Download model file and check
+      run: |
+        wget https://huggingface.co/lion-ai/MedImageInsights/resolve/main/2024.09.27/vision_model/medimageinsigt-v1.0.0.pt -O 2024.09.27/vision_model/medimageinsigt-v1.0.0.pt
+        du -sh * 
 
     - name: Build image
       run: docker build . --file Dockerfile --tag $IMAGE_NAME
