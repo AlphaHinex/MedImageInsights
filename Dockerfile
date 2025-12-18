@@ -9,6 +9,6 @@ RUN uv --version
 RUN uv python list
 
 RUN uv sync
-RUN uv run fastapi_app.py
+CMD uv run fastapi_app.py
 
 EXPOSE 8000
