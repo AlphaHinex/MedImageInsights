@@ -66,6 +66,7 @@ class MedImageInsight:
             # Set device
             self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             self.model.to(self.device)
+            self.model.eval()
 
             # Load tokenizer
             self.tokenize = build_tokenizer(self.opt['LANG_ENCODER'])
@@ -185,7 +186,7 @@ class MedImageInsight:
 
             # Move text tensors to the correct device
             text_tokens = {k: v.to(self.device) for k, v in text_tokens.items()}
-            output["text_embeddings"] = self.model.encode_text(text_tokens).cpu().numpy()
+            output["text_embeddings"] = self.model.encode_text(text_tokens).detach().cpu().numpy()
 
 
         return output
