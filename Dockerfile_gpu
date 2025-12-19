@@ -8,8 +8,8 @@ RUN ls -l /usr/bin | grep python
 COPY . /MedImageInsights
 WORKDIR /MedImageInsights
 
-RUN python -V
-RUN pip install uv
+RUN python3 -V
+RUN pip3 install uv
 RUN uv --version
 RUN uv python list
 
