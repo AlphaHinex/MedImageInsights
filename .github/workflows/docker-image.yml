@@ -27,8 +27,8 @@ jobs:
 
     - name: Build image
       run: |
-        docker build . --file Dockerfile --tag $IMAGE_NAME:cpu
-        # docker build . --file Dockerfile_gpu --tag $IMAGE_NAME:gpu
+        # docker build . --file Dockerfile --tag $IMAGE_NAME:cpu
+        docker build . --file Dockerfile_gpu --tag $IMAGE_NAME:gpu
 
     - name: Log in to Docker Hub
       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
@@ -38,5 +38,5 @@ jobs:
 
     - name: Push image
       run: |
-        docker push $IMAGE_NAME:cpu
-        # docker push $IMAGE_NAME:gpu
+        # docker push $IMAGE_NAME:cpu
+        docker push $IMAGE_NAME:gpu
