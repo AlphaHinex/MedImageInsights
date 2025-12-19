@@ -1,9 +1,13 @@
 FROM nvidia/cuda:12.4.1-cudnn-runtime-rockylinux8 
 
+RUN sudo dnf search python | grep ^python | grep -i interpreter
+RUN sudo dnf install python3.8.19
+RUN ls -l /usr/bin | grep python
+
 COPY . /MedImageInsights
 WORKDIR /MedImageInsights
 
-RUN python3 -V
+RUN python -V
 RUN pip install uv
 RUN uv --version
 RUN uv python list
