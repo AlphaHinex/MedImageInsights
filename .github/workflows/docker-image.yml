@@ -9,7 +9,7 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: docker.io
-  IMAGE_NAME: alphahinex/medimageinsights:latest
+  IMAGE_NAME: alphahinex/medimageinsights
 
 jobs:
 
@@ -26,7 +26,9 @@ jobs:
         du -sh * 
 
     - name: Build image
-      run: docker build . --file Dockerfile --tag $IMAGE_NAME
+      run: |
+        docker build . --file Dockerfile --tag $IMAGE_NAME:cpu
+        docker build . --file Dockerfile_gpu --tag $IMAGE_NAME:gpu
 
     - name: Log in to Docker Hub
       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
@@ -35,4 +37,6 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push image
-      run: docker push $IMAGE_NAME
+      run: |
+        docker push $IMAGE_NAME:cpu
+        docker push $IMAGE_NAME:gpu
